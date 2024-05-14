@@ -17,6 +17,7 @@ export default function SignUp() {
     login: false,
     password: false,
   });
+  const [showPassword, setShowPassword] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -45,6 +46,7 @@ export default function SignUp() {
       password: "",
     });
 
+    localStorage.setItem("user", JSON.stringify(true));
     navigate("/layout");
   }
 
@@ -113,10 +115,22 @@ export default function SignUp() {
               onChange={(e) =>
                 setUserInput((prev) => ({ ...prev, password: e.target.value }))
               }
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               placeholder="Password"
-            />
+            />{" "}
+            <i
+              style={{
+                color: "#7875b5",
+                cursor: "pointer",
+                position: "absolute",
+                bottom: "159px",
+                right: "60px",
+              }}
+              className={`fa-solid
+                    ${showPassword ? "fa-eye" : "fa-eye-slash"}`}
+              onClick={() => setShowPassword((prev) => !prev)}
+            ></i>
             {errors.password && (
               <span className={style.errorMessage}>
                 Bu joy bo'sh qolib ketti!
