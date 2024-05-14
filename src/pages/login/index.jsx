@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
+import { FaUser, FaEye, FaEyeSlash } from "react-icons/fa";
+import { IoLockClosed } from "react-icons/io5";
 
 function Login() {
   const usernameRef = useRef();
@@ -59,7 +61,7 @@ function Login() {
             <form className="login" onSubmit={handleSubmit}>
               <h3 className="info">Login to see many projects!</h3>
               <div className="login__field">
-                <i className="login__icon fas fa-user"></i>
+                <FaUser className="login__icon" />
                 <input
                   ref={usernameRef}
                   type="text"
@@ -71,26 +73,24 @@ function Login() {
                 )}
               </div>
               <div className="login__field">
-                <i className="login__icon fas fa-lock"></i>
+                <IoLockClosed className="login__icon" />
                 <input
                   ref={passwordRef}
                   type={showPassword ? "text" : "password"}
                   className="login__input"
                   placeholder="Password"
                 />
-
-                <i
-                  style={{
-                    color: "#7875b5",
-                    cursor: "pointer",
-                    position: "absolute",
-                    top: "30px",
-                    right: "35px",
-                  }}
-                  className={`fa-solid
-                    ${showPassword ? "fa-eye" : "fa-eye-slash"}`}
-                  onClick={() => setShowPassword((prev) => !prev)}
-                ></i>
+                {showPassword ? (
+                  <FaEye
+                    className="login_eyeicon"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                  />
+                ) : (
+                  <FaEyeSlash
+                    className="login_eyeicon"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                  />
+                )}
 
                 {passwordError && (
                   <p className="error-message">{passwordError}</p>

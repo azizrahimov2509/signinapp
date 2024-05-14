@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import style from "./style.module.css";
 import { Link, useNavigate } from "react-router-dom";
-
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 export default function SignUp() {
   const navigate = useNavigate();
   const [userInput, setUserInput] = useState({
@@ -118,19 +118,19 @@ export default function SignUp() {
               type={showPassword ? "text" : "password"}
               id="password"
               placeholder="Password"
-            />{" "}
-            <i
-              style={{
-                color: "#7875b5",
-                cursor: "pointer",
-                position: "absolute",
-                bottom: "159px",
-                right: "60px",
-              }}
-              className={`fa-solid
-                    ${showPassword ? "fa-eye" : "fa-eye-slash"}`}
-              onClick={() => setShowPassword((prev) => !prev)}
-            ></i>
+            />
+            {showPassword ? (
+              <FaEye
+                className={style.login_eyeicon}
+                onClick={() => setShowPassword((prev) => !prev)}
+              />
+            ) : (
+              <FaEyeSlash
+                className={style.login_eyeicon}
+                onClick={() => setShowPassword((prev) => !prev)}
+              />
+            )}
+
             {errors.password && (
               <span className={style.errorMessage}>
                 Bu joy bo'sh qolib ketti!

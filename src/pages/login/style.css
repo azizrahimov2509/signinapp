@@ -103,8 +103,19 @@ body {
 
 .login__icon {
   position: absolute;
-  top: 30px;
+  top: 32px;
   color: #7875b5;
+  font-size: 22px;
+  padding-right: 4px;
+}
+
+.login_eyeicon {
+  color: #7875b5;
+  cursor: pointer;
+  position: absolute;
+  top: 31px;
+  right: 24px;
+  font-size: 23px;
 }
 
 .login__input {

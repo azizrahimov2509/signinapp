@@ -60,6 +60,15 @@
   background-color: #45a049; /* Цвет фона при наведении */
 }
 
+.login_eyeicon {
+  color: #7875b5;
+  cursor: pointer;
+  position: absolute;
+  bottom: 155px;
+  right: 60px;
+  font-size: 23px;
+}
+
 .button {
   display: inline-block;
   padding: 10px 20px;
