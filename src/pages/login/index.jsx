@@ -39,7 +39,7 @@ function Login() {
 
     if (user.length) {
       localStorage.setItem("user", JSON.stringify(true));
-      navigate("/layout");
+      navigate("/layout/infos");
     } else {
       localStorage.setItem("user", JSON.stringify(false));
       setErrorMessage(

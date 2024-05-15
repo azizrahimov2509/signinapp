@@ -47,7 +47,7 @@ export default function SignUp() {
     });
 
     localStorage.setItem("user", JSON.stringify(true));
-    navigate("/layout");
+    navigate("/layout/infos");
   }
 
   return (

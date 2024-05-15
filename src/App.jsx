@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -13,6 +13,7 @@ import Login from "./pages/login";
 import Layout from "./layout";
 import Home from "./pages/home";
 import SignUp from "./pages/signUp";
+import Informs from "./pages/informs";
 
 function App() {
   function Redirect({ children }) {
@@ -36,7 +37,10 @@ function App() {
               <Layout />
             </Redirect>
           }
-        ></Route>
+        >
+          <Route path="home" element={<Home />} />
+          <Route path="infos" element={<Informs />} />
+        </Route>
       </>
     )
   );

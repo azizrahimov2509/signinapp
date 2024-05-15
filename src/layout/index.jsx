@@ -1,43 +1,25 @@
-import React from 'react'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import Header from "../components/Header";
+import Home from "../pages/home";
+import { Outlet } from "react-router-dom";
 
-function Layout() {
+export default function Layout() {
+  const [data, setData] = useState([]);
 
-    const navigate = useNavigate();
-    function LogOut(){
-      localStorage.setItem('user',JSON.stringify(false));
-      navigate('/');
-    }
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/todos")
+      .then((response) => response.json())
+      .then((result) => setData(result.slice(0, 20)))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
   return (
     <div>
-      <header>
-        <div className="container container-signup">
-            <button onClick={LogOut} className='logout'>Log out</button>
-            <Link to={'/signup'} className='signUp'>SignUp</Link>
-        </div>
-      </header>
+      <Header />
+
       <main>
-        <Outlet/>
-        <div className="container container-projects">
-            <div className="projects">
-                <h2>Here you can find a lot of project that was done by Rahimov A.</h2>
-                <h3>Click these links on the right side to see projects</h3>
-            </div>
-           <div className="links">
-            
-           <p> This is todolist: <Link  className='apps' to='https://7darstodolist.netlify.app' target='blank'>Todolist</Link></p>
-                <p> This is Unsplash images: <Link className='apps' to='https://unsplashphotosbyrahimov.netlify.app' target='blank'>Insplash images</Link></p>
-
-                <p> This is todocarr(find your favourite car): <Link className='apps' to='https://todocar8chidars.netlify.app' target='blank'>Todocar</Link></p>
-                <p> This is infoserver: <Link className='apps' to='https://infofromserver.netlify.app' target='blank'>Infos from sercer</Link></p>
-                <p> This is cocktails: <Link className='apps' to='https://coctailsrahimov.netlify.app' target='blank'>Coctails</Link></p>
-                <p> This is flags(you can find all info about flags all around the world): <Link className='apps' to='https://flagsbyrahimov.netlify.app' target='blank'>Flags</Link></p>
-           </div>
-        </div>
+        <Home data={data} setData={setData} />
       </main>
-      <footer></footer>
     </div>
-  )
+  );
 }
-
-export default Layout
