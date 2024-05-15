@@ -1,7 +1,14 @@
 import React, { useRef, useState } from "react";
 import "./style.css";
 import { Link, useNavigate } from "react-router-dom";
-import { FaUser, FaEye, FaEyeSlash } from "react-icons/fa";
+import {
+  FaUser,
+  FaEye,
+  FaEyeSlash,
+  FaInstagram,
+  FaTelegram,
+  FaLinkedin,
+} from "react-icons/fa";
 import { IoLockClosed } from "react-icons/io5";
 
 function Login() {
@@ -62,6 +69,7 @@ function Login() {
               <h3 className="info">Login to see many projects!</h3>
               <div className="login__field">
                 <FaUser className="login__icon" />
+
                 <input
                   ref={usernameRef}
                   type="text"
@@ -112,18 +120,18 @@ function Login() {
                 <Link
                   to="https://www.instagram.com/rahimov_2520/?hl=ru"
                   target="blank"
-                  className="social-login__icon fab fa-instagram"
-                ></Link>
-                <Link
-                  to="https://t.me/Rahimov552"
-                  target="blank"
-                  className="social-login__icon fab fa-telegram"
-                ></Link>
+                >
+                  <FaInstagram className="social-login__icon" />
+                </Link>
+                <Link to="https://t.me/Rahimov552" target="blank">
+                  <FaTelegram className="social-login__icon" />
+                </Link>
                 <Link
                   to="https://www.linkedin.com/in/aziz-rahimov/"
                   target="blank"
-                  className="social-login__icon fab fa-linkedin"
-                ></Link>
+                >
+                  <FaLinkedin className="social-login__icon" />
+                </Link>
               </div>
             </div>
           </div>
